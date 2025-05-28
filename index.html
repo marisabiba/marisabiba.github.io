@@ -807,12 +807,29 @@
         // Add scroll effect to header
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
+            const logo = document.querySelector('.logo');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(255, 255, 255, 0.95)';
                 header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                
+                // Change text color to dark when background is white
+                logo.style.color = '#333';
+                navLinks.forEach(link => {
+                    link.style.color = '#333';
+                });
             } else {
                 header.style.background = 'rgba(255, 255, 255, 0.1)';
                 header.style.backdropFilter = 'blur(10px)';
+                header.style.boxShadow = 'none';
+                
+                // Keep text color white when background is transparent
+                logo.style.color = 'white';
+                navLinks.forEach(link => {
+                    link.style.color = 'white';
+                });
             }
         });
     </script>
