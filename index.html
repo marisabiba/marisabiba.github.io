@@ -4,393 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marisa Biba - Java Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 100px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .tech-stack {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            color: white;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Projects Section */
-        .projects {
-            background: white;
-            padding: 100px 0;
-            margin-top: -50px;
-            border-radius: 50px 50px 0 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #f0f0f0;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 107, 107, 0.2));
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .project-description {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: #f8f9fa;
-            color: #495057;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid #e9ecef;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        /* Project Detail Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background: white;
-            margin: 2rem auto;
-            max-width: 900px;
-            border-radius: 20px;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            padding: 2rem;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #666;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-btn:hover {
-            background: #f0f0f0;
-            color: #333;
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        .project-screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .screenshot {
-            height: 200px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 0.9rem;
-            border: 2px dashed #dee2e6;
-        }
-
-        .features-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .features-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #ffd700;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                margin: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <header>
         <nav class="container">
             <div class="logo">Marisa Biba</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+            <button class="burger" id="burger-menu" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="main-nav">
+                <li><a href="#home">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-nav" id="mobile-nav">
+                <ul>
+                    <li><a href="#home" onclick="closeMobileNav()">About</a></li>
+                    <li><a href="#projects" onclick="closeMobileNav()">Projects</a></li>
+                    <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
             <div class="container">
+                <img src="images/Profile.png" alt="Marisa Biba" class="profile-photo">
                 <h1>&lt;java developer/&gt;</h1>
                 <p>Building robust, scalable applications with clean, efficient code</p>
                 <div class="tech-stack">
@@ -408,74 +51,73 @@
             <div class="container">
                 <h2 class="section-title">Latest Projects</h2>
                 <div class="projects-grid">
-                    <div class="project-card" onclick="openModal('ecommerce')">
-                        <div class="project-image">🛒</div>
+                    <!-- Dozer Project Card -->
+                    <div class="project-card" onclick="openModal('dozer')">
+                        <div class="project-image project-image-cover">
+                            <img src="images/Dozer (9).jpeg" alt="Dozer Project Cover">
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">E-Commerce Platform</h3>
-                            <p class="project-description">A full-featured online shopping platform with user authentication, product catalog, shopping cart, and payment integration.</p>
+                            <h3 class="project-title">Dozer Sales Platform</h3>
+                            <p class="project-description">
+                                Modern web and Android application for Dozer, a leading excavator dealer in the Netherlands, digitizing and streamlining the sales process for machines, quotes, and trade-ins.
+                            </p>
                             <div class="project-tech">
-                                <span class="tech-tag">Spring Boot</span>
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">JPA</span>
-                                <span class="tech-tag">Thymeleaf</span>
+                                <span class="tech-tag">Blazor</span>
+                                <span class="tech-tag">.NET</span>
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Kotlin</span>
+                                <span class="tech-tag">Android</span>
+                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">Azure</span>
                             </div>
                             <div class="project-links">
                                 <a href="#" class="btn btn-primary">View Details</a>
-                                <a href="#" class="btn btn-secondary">GitHub</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card" onclick="openModal('taskmanager')">
-                        <div class="project-image">📋</div>
+                    <!-- Supplier Portal Project Card -->
+                    <div class="project-card" onclick="openModal('supplier')">
+                        <div class="project-image project-image-cover">
+                            <img src="images/Supplier (5).jpeg" alt="Supplier Portal Cover">
+                        </div>
                         <div class="project-content">
-                            <h3 class="project-title">Task Management System</h3>
-                            <p class="project-description">A collaborative task management application with real-time updates, team collaboration, and advanced filtering capabilities.</p>
+                            <h3 class="project-title">Supplier Portal</h3>
+                            <p class="project-description">
+                                Comprehensive platform for seamless interaction between companies and suppliers, centralizing order management, payment tracking, supplier info, and communication.
+                            </p>
                             <div class="project-tech">
                                 <span class="tech-tag">Java</span>
-                                <span class="tech-tag">Spring MVC</span>
-                                <span class="tech-tag">WebSocket</span>
-                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">JPA</span>
+                                <span class="tech-tag">JavaFX</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Koa.js</span>
+                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">Agile</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="btn btn-primary">View Details</a>
-                                <a href="#" class="btn btn-secondary">GitHub</a>
+                                <a href="#" class="btn btn-primary" onclick="event.stopPropagation(); openModal('supplier');">View Details</a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card" onclick="openModal('banking')">
-                        <div class="project-image">🏦</div>
-                        <div class="project-content">
-                            <h3 class="project-title">Banking System API</h3>
-                            <p class="project-description">Secure REST API for banking operations including account management, transactions, and fraud detection mechanisms.</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Spring Security</span>
-                                <span class="tech-tag">JWT</span>
-                                <span class="tech-tag">H2 Database</span>
-                                <span class="tech-tag">JUnit</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-primary">View Details</a>
-                                <a href="#" class="btn btn-secondary">GitHub</a>
-                            </div>
+                    <!-- Trip Planner iOS App Project Card -->
+                    <div class="project-card" onclick="openModal('tripplanner')">
+                        <div class="project-image project-image-cover">
+                            <img src="images/TripPlanner.jpg" alt="Trip Planner iOS App Cover">
                         </div>
-                    </div>
-
-                    <div class="project-card" onclick="openModal('weather')">
-                        <div class="project-image">🌤️</div>
                         <div class="project-content">
-                            <h3 class="project-title">Weather Analytics Dashboard</h3>
-                            <p class="project-description">Data visualization dashboard that aggregates weather data from multiple APIs and provides detailed analytics and forecasting.</p>
+                            <h3 class="project-title">Trip Planner iOS App</h3>
+                            <p class="project-description">
+                                A modern iOS application built with SwiftUI to help users plan and organize their trips, including day-by-day activities, budgets, transportation, and checklists.
+                            </p>
                             <div class="project-tech">
-                                <span class="tech-tag">Spring Boot</span>
-                                <span class="tech-tag">REST Client</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Chart.js</span>
+                                <span class="tech-tag">SwiftUI</span>
+                                <span class="tech-tag">Swift 5.0</span>
+                                <span class="tech-tag">MVVM</span>
+                                <span class="tech-tag">UserDefaults</span>
+                                <span class="tech-tag">iOS 16.4+</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="btn btn-primary">View Details</a>
-                                <a href="#" class="btn btn-secondary">GitHub</a>
+                                <a href="#" class="btn btn-primary" onclick="event.stopPropagation(); openModal('tripplanner');">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -485,353 +127,283 @@
     </main>
 
     <!-- Project Detail Modals -->
-    <div id="ecommerce-modal" class="modal">
+    <div id="dozer-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>E-Commerce Platform</h2>
-                <button class="close-btn" onclick="closeModal('ecommerce')">&times;</button>
+                <h2>Dozer Sales Platform</h2>
+                <button class="close-btn" onclick="closeModal('dozer')">&times;</button>
             </div>
             <div class="modal-body">
-                <h3>Project Overview</h3>
-                <p>A comprehensive e-commerce solution built with Spring Boot, featuring a complete shopping experience from product browsing to checkout. The platform includes admin panels for inventory management and order processing.</p>
-                
-                <h3>Technologies Used</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Java 17</span>
-                    <span class="tech-tag">Spring Boot 3.0</span>
-                    <span class="tech-tag">Spring Security</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">JPA/Hibernate</span>
-                    <span class="tech-tag">Thymeleaf</span>
-                    <span class="tech-tag">Bootstrap</span>
-                    <span class="tech-tag">Maven</span>
-                </div>
-
-                <h3>Key Features</h3>
+                <h3>Client</h3>
+                <p>
+                    <strong>Dozer</strong> is a specialized company in the sale of excavators, with multiple branches throughout the Netherlands. The company sells various types of machines, such as mobile excavators, crawler excavators, and wheel loaders. They work with a team of sales representatives spread across different branches, each managing their own customer base.
+                </p>
+                <h3>Assignment</h3>
                 <ul class="features-list">
-                    <li>User registration and authentication with role-based access</li>
-                    <li>Product catalog with search and filtering capabilities</li>
-                    <li>Shopping cart and wishlist functionality</li>
-                    <li>Secure payment integration with Stripe API</li>
-                    <li>Order tracking and history</li>
-                    <li>Admin dashboard for product and order management</li>
-                    <li>Email notifications for order confirmations</li>
-                    <li>Responsive design for mobile and desktop</li>
+                    <li>Manage machines with various options and categories</li>
+                    <li>Automatic processing of LIAS Excel files, including German-to-Dutch translations</li>
+                    <li>Automatic generation of quotes and orders as PDFs</li>
+                    <li>Integrated trade-in system for existing machines</li>
+                    <li>Easy price updates via Excel imports</li>
+                    <li>Modern web application (Blazor) and Android version (Kotlin)</li>
+                    <li>Role-based access: sales reps (branch/customers), admins (full system)</li>
                 </ul>
-
-                <h3>My Role & Responsibilities</h3>
+                <h3>Technical Skills</h3>
                 <ul class="features-list">
-                    <li>Full-stack developer responsible for both frontend and backend</li>
-                    <li>Designed and developed WebSocket integration for real-time updates</li>
-                    <li>Implemented drag-and-drop functionality using jQuery UI</li>
-                    <li>Created Redis caching layer for improved performance</li>
-                    <li>Developed file upload system with virus scanning</li>
-                    <li>Built comprehensive notification system (email + in-app)</li>
-                    <li>Implemented advanced search with Elasticsearch integration</li>
-                    <li>Created project analytics dashboard with custom metrics</li>
-                    <li>Set up CI/CD pipeline using Jenkins and Docker</li>
-                    <li>Conducted code reviews and mentored junior developers</li>
+                    <li>Learned and applied C# and Kotlin (Android)</li>
+                    <li>Built applications using Blazor WebAssembly and .NET</li>
+                    <li>Developed and consumed RESTful APIs</li>
+                    <li>Used dependency injection and DTOs</li>
+                    <li>Jetpack Compose, MVVM, Room Database (Android)</li>
+                    <li>Authentication and authorization mechanisms</li>
+                    <li>Worked with Azure Blob Storage</li>
                 </ul>
-
+                <h3>Development Methodologies</h3>
+                <ul class="features-list">
+                    <li>DevOps environment, collaboration with Ops team</li>
+                    <li>Agile: sprints, stand-ups, retrospectives</li>
+                    <li>Pull requests and code reviews</li>
+                    <li>Iterative development and continuous improvement</li>
+                </ul>
+                <h3>Project & Product Skills</h3>
+                <ul class="features-list">
+                    <li>Layered software architecture</li>
+                    <li>Wireframes and mock-ups for UI/UX</li>
+                    <li>Requirements gathering via client meetings and feedback</li>
+                    <li>Regular demos and presentations to stakeholders</li>
+                    <li>Project-based thinking and goal-oriented development</li>
+                </ul>
+                <h3>Technical Highlights</h3>
+                <ul class="features-list">
+                    <li><strong>Android (Kotlin):</strong> Jetpack Compose UI, MVVM, Room DB, navigation, backend sync, quotation details</li>
+                    <li><strong>C# / .NET / Blazor:</strong> REST APIs, async backend calls, auth, forms with DTOs and validation, responsive Edit Machine, quotation/address management</li>
+                </ul>
+                <h3>Development Tools & Methodologies</h3>
+                <ul class="features-list">
+                    <li>DevOps, Ops team collaboration</li>
+                    <li>Jira (issue tracking, sprints), Confluence (docs)</li>
+                    <li>Pull requests, code reviews, peer learning</li>
+                    <li>Agile workflow, sprint planning</li>
+                </ul>
+                <h3>Project Leadership</h3>
+                <ul class="features-list">
+                    <li>Coordinated team members and planning</li>
+                    <li>Tracked progress and ensured follow-up</li>
+                    <li>Contributed to frontend and backend features</li>
+                    <li>Ensured technical precision, responsiveness, and robust validation</li>
+                    <li>Strengthened software quality and user-centric design</li>
+                </ul>
                 <h3>Screenshots</h3>
-                <div class="project-screenshots">
-                    <div class="screenshot">Homepage Screenshot</div>
-                    <div class="screenshot">Product Catalog</div>
-                    <div class="screenshot">Shopping Cart</div>
-                    <div class="screenshot">Admin Dashboard</div>
+                <div class="project-screenshots dozer-screenshots" id="dozer-screenshots">
+                    <div class="screenshot"><img src="images/Dozer (1).jpeg" alt="Dashboard Screenshot" /></div>
+                    <div class="screenshot"><img src="images/Dozer (2).jpeg" alt="Machine Management" /></div>
+                    <div class="screenshot"><img src="images/Dozer (3).jpeg" alt="Quotation PDF" /></div>
+                    <div class="screenshot"><img src="images/Dozer (4).jpeg" alt="Trade-in System" /></div>
+                    <div class="screenshot"><img src="images/Dozer (5).jpeg" alt="Excel Import" /></div>
+                    <div class="screenshot"><img src="images/Dozer (6).jpeg" alt="LIAS Excel Processing" /></div>
+                    <div class="screenshot"><img src="images/Dozer (7).jpeg" alt="German to Dutch Translation" /></div>
+                    <div class="screenshot"><img src="images/Dozer (8).jpeg" alt="User Roles Management" /></div>
+                    <div class="screenshot"><img src="images/Dozer (9).jpeg" alt="Android App Home" /></div>
+                    <div class="screenshot"><img src="images/Dozer (10).jpeg" alt="Android Quotation Details" /></div>
+                    <div class="screenshot"><img src="images/Dozer (11).jpeg" alt="Android Machine List" /></div>
+                    <div class="screenshot"><img src="images/Dozer (12).jpeg" alt="Android Trade-in Feature" /></div>
+                    <div class="screenshot"><img src="images/Dozer (13).jpeg" alt="Android Trade-in Feature" /></div>
+                    <div class="screenshot"><img src="images/Dozer (14).jpeg" alt="Android Trade-in Feature" /></div>
                 </div>
-
-                <h3>My Role & Responsibilities</h3>
-                <ul class="features-list">
-                    <li>Led the backend development team of 3 developers</li>
-                    <li>Designed and implemented the entire REST API architecture</li>
-                    <li>Developed user authentication and authorization system</li>
-                    <li>Integrated Stripe payment gateway and handled security compliance</li>
-                    <li>Implemented product catalog with advanced search functionality</li>
-                    <li>Created admin dashboard for inventory and order management</li>
-                    <li>Set up automated testing suite with 85% code coverage</li>
-                    <li>Optimized database queries reducing load time by 40%</li>
-                    <li>Deployed application using Docker and AWS EC2</li>
-                </ul>
-
-                <h3>Architecture & Design Patterns</h3>
-                <p>The application follows MVC architecture with service layer pattern. Repository pattern is used for data access, and DTO pattern for data transfer between layers. Security is implemented using Spring Security with JWT tokens.</p>
-
-                <div class="project-links">
-                    <a href="#" class="btn btn-primary">Live Demo</a>
-                    <a href="#" class="btn btn-secondary">View on GitHub</a>
+                <!-- Fullscreen image modal -->
+                <div class="image-modal" id="image-modal">
+                    <div class="image-modal-content">
+                        <button class="image-modal-arrow left" id="image-modal-prev" aria-label="Previous image">&#8592;</button>
+                        <img class="image-modal-img" id="image-modal-img" src="" alt="Screenshot" />
+                        <button class="image-modal-arrow right" id="image-modal-next" aria-label="Next image">&#8594;</button>
+                        <button class="image-modal-close" id="image-modal-close" aria-label="Close">&times;</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="taskmanager-modal" class="modal">
+    <!-- Supplier Portal Modal -->
+    <div id="supplier-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Task Management System</h2>
-                <button class="close-btn" onclick="closeModal('taskmanager')">&times;</button>
+                <h2>Supplier Portal</h2>
+                <button class="close-btn" onclick="closeModal('supplier')">&times;</button>
             </div>
             <div class="modal-body">
                 <h3>Project Overview</h3>
-                <p>A collaborative task management application designed for teams to organize, track, and complete projects efficiently. Features real-time collaboration and advanced project analytics.</p>
-                
-                <h3>Technologies Used</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Java 11</span>
-                    <span class="tech-tag">Spring MVC</span>
-                    <span class="tech-tag">WebSocket</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Redis</span>
-                    <span class="tech-tag">jQuery</span>
-                    <span class="tech-tag">Docker</span>
-                </div>
-
-                <h3>Key Features</h3>
+                <p>
+                    The <strong>Supplier Portal</strong> is a comprehensive platform designed to enable seamless interaction between companies and suppliers. It serves as a centralized hub for managing orders, payment statuses, supplier information, and communication.
+                </p>
+                <h3>Main Functionalities</h3>
                 <ul class="features-list">
-                    <li>Real-time task updates using WebSocket</li>
-                    <li>Drag-and-drop task management boards</li>
-                    <li>Team collaboration with comments and attachments</li>
-                    <li>Advanced filtering and search capabilities</li>
-                    <li>Project timeline and milestone tracking</li>
-                    <li>Email and in-app notifications</li>
-                    <li>Performance analytics and reporting</li>
-                    <li>File upload and document management</li>
+                    <li>Order management</li>
+                    <li>Tracking of payment statuses</li>
+                    <li>Requests for payment status updates</li>
+                    <li>Supplier information management</li>
                 </ul>
-
+                <h3>Technical Skills</h3>
+                <ul class="features-list">
+                    <li>Java (JPA, JavaFX, design patterns), JavaScript (React, Koa.js)</li>
+                    <li>REST API development, database design & management</li>
+                    <li>Full-stack experience: front-end (UI) & back-end (logic & integration)</li>
+                    <li>Agile workflows with Jira & Confluence</li>
+                </ul>
+                <h3>Project Contributions</h3>
+                <ul class="features-list">
+                    <li>Delivered core features in Java & JavaScript modules</li>
+                    <li>Led full-stack tasks: quotations, editing, validations, async calls</li>
+                    <li>Coordinated development across front-end and back-end</li>
+                    <li>Involved in planning, testing, and client demos</li>
+                </ul>
+                <h3>Teamwork & Soft Skills</h3>
+                <ul class="features-list">
+                    <li>Strong team communication and collaboration</li>
+                    <li>Code reviews & constructive feedback</li>
+                    <li>Took initiative in problem-solving and coordination</li>
+                    <li>Learned leadership skills during sprint lead role</li>
+                </ul>
+                <h3>Growth & Learning</h3>
+                <ul class="features-list">
+                    <li>Improved in time estimation and sprint planning</li>
+                    <li>Gained deeper insight into structured Agile development</li>
+                    <li>Learned to work efficiently with real-world tools and clients</li>
+                </ul>
                 <h3>Screenshots</h3>
-                <div class="project-screenshots">
-                    <div class="screenshot">Kanban Board</div>
-                    <div class="screenshot">Task Details</div>
-                    <div class="screenshot">Team Dashboard</div>
-                    <div class="screenshot">Analytics View</div>
+                <div class="project-screenshots supplier-screenshots" id="supplier-screenshots">
+                    <div class="screenshot"><img src="images/Supplier (1).jpeg" alt="Supplier Portal Screenshot 1" /></div>
+                    <div class="screenshot"><img src="images/Supplier (2).jpeg" alt="Supplier Portal Screenshot 2" /></div>
+                    <div class="screenshot"><img src="images/Supplier (3).jpeg" alt="Supplier Portal Screenshot 3" /></div>
+                    <div class="screenshot"><img src="images/Supplier (4).jpeg" alt="Supplier Portal Screenshot 4" /></div>
+                    <div class="screenshot"><img src="images/Supplier (5).jpeg" alt="Supplier Portal Screenshot 5" /></div>
+                    <div class="screenshot"><img src="images/Supplier (6).jpeg" alt="Supplier Portal Screenshot 6" /></div>
+                    <div class="screenshot"><img src="images/Supplier (7).jpeg" alt="Supplier Portal Screenshot 7" /></div>
+                    <div class="screenshot"><img src="images/Supplier (8).jpeg" alt="Supplier Portal Screenshot 8" /></div>
+                    <div class="screenshot"><img src="images/Supplier (9).jpeg" alt="Supplier Portal Screenshot 9" /></div>
+                    <div class="screenshot"><img src="images/Supplier (10).jpeg" alt="Supplier Portal Screenshot 10" /></div>
+                    <div class="screenshot"><img src="images/Supplier (11).jpeg" alt="Supplier Portal Screenshot 11" /></div>
+                    <div class="screenshot"><img src="images/Supplier (12).jpeg" alt="Supplier Portal Screenshot 12" /></div>
+                
                 </div>
-
-                <div class="project-links">
-                    <a href="#" class="btn btn-primary">Live Demo</a>
-                    <a href="#" class="btn btn-secondary">View on GitHub</a>
+                <!-- Fullscreen image modal for Supplier Portal -->
+                <div class="image-modal" id="supplier-image-modal">
+                    <div class="image-modal-content">
+                        <button class="image-modal-arrow left" id="supplier-image-modal-prev" aria-label="Previous image">&#8592;</button>
+                        <img class="image-modal-img" id="supplier-image-modal-img" src="" alt="Screenshot" />
+                        <button class="image-modal-arrow right" id="supplier-image-modal-next" aria-label="Next image">&#8594;</button>
+                        <button class="image-modal-close" id="supplier-image-modal-close" aria-label="Close">&times;</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="banking-modal" class="modal">
+    <!-- Trip Planner Modal -->
+    <div id="tripplanner-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Banking System API</h2>
-                <button class="close-btn" onclick="closeModal('banking')">&times;</button>
+                <h2>Trip Planner iOS App</h2>
+                <button class="close-btn" onclick="closeModal('tripplanner')">&times;</button>
             </div>
             <div class="modal-body">
                 <h3>Project Overview</h3>
-                <p>A secure REST API for banking operations with comprehensive security measures, transaction processing, and fraud detection capabilities. Built with enterprise-grade security standards.</p>
-                
-                <h3>Technologies Used</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Spring Boot</span>
-                    <span class="tech-tag">Spring Security</span>
-                    <span class="tech-tag">JWT</span>
-                    <span class="tech-tag">H2 Database</span>
-                    <span class="tech-tag">JUnit 5</span>
-                    <span class="tech-tag">Mockito</span>
-                    <span class="tech-tag">Swagger</span>
-                </div>
-
-                <h3>Key Features</h3>
+                <p>
+                    <strong>Trip Planner</strong> is a modern iOS application built with SwiftUI that helps users plan and organize their trips effectively. This is a personal project, fully designed and developed by me, covering all aspects from UI/UX to architecture, persistence, and feature implementation.
+                </p>
+                <h3>Features</h3>
                 <ul class="features-list">
-                    <li>Secure authentication with JWT tokens</li>
-                    <li>Account creation and management</li>
-                    <li>Money transfer between accounts</li>
-                    <li>Transaction history and statements</li>
-                    <li>Balance inquiry and account details</li>
-                    <li>Fraud detection algorithms</li>
-                    <li>API rate limiting and security headers</li>
-                    <li>Comprehensive unit and integration tests</li>
+                    <li>Create, edit, and delete trips with start/end dates</li>
+                    <li>Organized trip list view</li>
+                    <li>Day-by-day planning with chronological activities</li>
+                    <li>Add activity details: time, location, notes</li>
+                    <li>Track transportation arrangements per day</li>
+                    <li>Budget tracking for each day and planned expenses</li>
+                    <li>Checklists for daily tasks and packing</li>
                 </ul>
-
-                <h3>My Role & Responsibilities</h3>
+                <h3>Technical Details</h3>
                 <ul class="features-list">
-                    <li>Solo backend developer for the entire API development</li>
-                    <li>Researched and implemented banking security standards (PCI DSS)</li>
-                    <li>Designed database schema for account and transaction management</li>
-                    <li>Developed JWT-based authentication and authorization system</li>
-                    <li>Implemented fraud detection algorithms using machine learning</li>
-                    <li>Created comprehensive API documentation using Swagger</li>
-                    <li>Built automated testing suite with 95% code coverage</li>
-                    <li>Implemented rate limiting and security headers</li>
-                    <li>Conducted security audits and penetration testing</li>
-                    <li>Optimized API performance handling 1000+ concurrent requests</li>
+                    <li>Framework: <strong>SwiftUI</strong></li>
+                    <li>Architecture: <strong>MVVM (Model-View-ViewModel)</strong></li>
+                    <li>Data Persistence: <strong>UserDefaults</strong></li>
+                    <li>Minimum iOS Version: <strong>iOS 16.4</strong></li>
+                    <li>Swift Version: <strong>5.0</strong></li>
                 </ul>
-
-                <h3>API Endpoints</h3>
+                <h3>Personal Contributions</h3>
                 <ul class="features-list">
-                    <li>POST /api/auth/login - User authentication</li>
-                    <li>GET /api/accounts - Get account information</li>
-                    <li>POST /api/transactions/transfer - Transfer funds</li>
-                    <li>GET /api/transactions/history - Transaction history</li>
-                    <li>GET /api/accounts/balance - Check balance</li>
+                    <li>Designed and implemented all UI/UX using SwiftUI</li>
+                    <li>Developed MVVM architecture for maintainability</li>
+                    <li>Implemented custom data models for trips, days, activities, budgets, and checklists</li>
+                    <li>Handled all data persistence and state management</li>
+                    <li>Created custom views for activity scheduling, budget input, and checklist tracking</li>
+                    <li>Tested app on multiple devices and iOS versions</li>
+                    <li>Iterated on design based on personal use and feedback</li>
                 </ul>
-
+                <h3>Growth & Learning</h3>
+                <ul class="features-list">
+                    <li>Deepened knowledge of SwiftUI and MVVM</li>
+                    <li>Improved skills in iOS app architecture and state management</li>
+                    <li>Enhanced UI/UX design abilities for mobile</li>
+                    <li>Learned to optimize for performance and user experience</li>
+                </ul>
                 <h3>Screenshots</h3>
-                <div class="project-screenshots">
-                    <div class="screenshot">API Documentation</div>
-                    <div class="screenshot">Postman Testing</div>
-                    <div class="screenshot">Security Config</div>
-                    <div class="screenshot">Test Coverage</div>
+                <div class="project-screenshots tripplanner-screenshots" id="tripplanner-screenshots">
+                    <div class="screenshot"><img src="images/TripPlanner (1).png" alt="Trip Planner Screenshot 1" /></div>
+                    <div class="screenshot"><img src="images/TripPlanner (2).png" alt="Trip Planner Screenshot 2" /></div>
+                    <div class="screenshot"><img src="images/TripPlanner (3).png" alt="Trip Planner Screenshot 3" /></div>
+                    <div class="screenshot"><img src="images/TripPlanner (4).png" alt="Trip Planner Screenshot 4" /></div>
                 </div>
-
-                <div class="project-links">
-                    <a href="#" class="btn btn-primary">API Documentation</a>
-                    <a href="#" class="btn btn-secondary">View on GitHub</a>
+                <!-- Fullscreen image modal for Trip Planner -->
+                <div class="image-modal" id="tripplanner-image-modal">
+                    <div class="image-modal-content">
+                        <button class="image-modal-arrow left" id="tripplanner-image-modal-prev" aria-label="Previous image">&#8592;</button>
+                        <img class="image-modal-img" id="tripplanner-image-modal-img" src="" alt="Screenshot" />
+                        <button class="image-modal-arrow right" id="tripplanner-image-modal-next" aria-label="Next image">&#8594;</button>
+                        <button class="image-modal-close" id="tripplanner-image-modal-close" aria-label="Close">&times;</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="weather-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Weather Analytics Dashboard</h2>
-                <button class="close-btn" onclick="closeModal('weather')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h3>Project Overview</h3>
-                <p>A comprehensive weather analytics platform that aggregates data from multiple weather APIs, stores historical data, and provides detailed analytics with interactive visualizations and forecasting capabilities.</p>
-                
-                <h3>Technologies Used</h3>
-                <div class="project-tech">
-                    <span class="tech-tag">Spring Boot</span>
-                    <span class="tech-tag">Spring WebFlux</span>
-                    <span class="tech-tag">MongoDB</span>
-                    <span class="tech-tag">Chart.js</span>
-                    <span class="tech-tag">Scheduler</span>
-                    <span class="tech-tag">REST Template</span>
-                    <span class="tech-tag">Lombok</span>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color:white;">Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p style="font-size:1.2rem; color:#f8f9fa; margin-bottom:1.5rem;">
+                        Let's connect! Feel free to reach out for collaborations, job opportunities, or just to say hi.
+                    </p>
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:marisa.biba@example.com">marisa.biba@example.com</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">🐱</span>
+                            <a href="https://github.com/marisabiba" target="_blank">github.com/marisabiba</a>
+                        </li>
+                        <li>
+                            <span class="contact-icon">🔗</span>
+                            <a href="https://linkedin.com/in/marisabiba" target="_blank">linkedin.com/in/marisabiba</a>
+                        </li>
+                    </ul>
                 </div>
-
-                <h3>Key Features</h3>
-                <ul class="features-list">
-                    <li>Real-time weather data from multiple APIs</li>
-                    <li>Historical weather data storage and analysis</li>
-                    <li>Interactive charts and graphs</li>
-                    <li>Weather forecast predictions</li>
-                    <li>Location-based weather tracking</li>
-                    <li>Weather alerts and notifications</li>
-                    <li>Data export functionality</li>
-                    <li>Responsive dashboard design</li>
-                </ul>
-
-                <h3>My Role & Responsibilities</h3>
-                <ul class="features-list">
-                    <li>Lead developer responsible for system architecture and design</li>
-                    <li>Integrated multiple weather APIs with fallback mechanisms</li>
-                    <li>Developed data aggregation algorithms for weather analysis</li>
-                    <li>Created MongoDB data models for time-series weather data</li>
-                    <li>Built responsive frontend with Chart.js for data visualization</li>
-                    <li>Implemented automated data collection using Spring Scheduler</li>
-                    <li>Developed weather prediction algorithms using historical data</li>
-                    <li>Created RESTful APIs for mobile app integration</li>
-                    <li>Optimized database queries for large datasets (10M+ records)</li>
-                    <li>Implemented caching strategy reducing API response time by 60%</li>
-                </ul>
-
-                <h3>Data Sources</h3>
-                <ul class="features-list">
-                    <li>OpenWeatherMap API</li>
-                    <li>Weather.gov API</li>
-                    <li>AccuWeather API</li>
-                    <li>Historical weather databases</li>
-                </ul>
-
-                <h3>Screenshots</h3>
-                <div class="project-screenshots">
-                    <div class="screenshot">Main Dashboard</div>
-                    <div class="screenshot">Analytics Charts</div>
-                    <div class="screenshot">Forecast View</div>
-                    <div class="screenshot">Historical Data</div>
-                </div>
-
-                <div class="project-links">
-                    <a href="#" class="btn btn-primary">Live Demo</a>
-                    <a href="#" class="btn btn-secondary">View on GitHub</a>
+                <div class="contact-socials">
+                    <a href="mailto:bibamarisa@yahoo.com" class="contact-social-link" title="Email" target="_blank">📧</a>
+                    <a href="https://github.com/marisabiba" class="contact-social-link" title="GitHub" target="_blank">🐱</a>
+                    <a href="https://linkedin.com/in/marisabiba" class="contact-social-link" title="LinkedIn" target="_blank">🔗</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Marisa Biba All rights reserved.</p>
-            <div class="social-links">
-                <a href="#">📧</a>
-                <a href="#">🔗</a>
-                <a href="#">📱</a>
-                <a href="#">🐱</a>
-            </div>
+            <p class="footer-title">&copy; 2025 Marisa Biba</p>
+            <p class="footer-desc">Crafted with passion and Java ☕</p>
         </div>
     </footer>
-
-    <script>
-        function openModal(projectId) {
-            const modal = document.getElementById(projectId + '-modal');
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(projectId) {
-            const modal = document.getElementById(projectId + '-modal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            const logo = document.querySelector('.logo');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(20px)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-                
-                // Change text color to dark when background is white
-                logo.style.color = '#333';
-                navLinks.forEach(link => {
-                    link.style.color = '#333';
-                });
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.1)';
-                header.style.backdropFilter = 'blur(10px)';
-                header.style.boxShadow = 'none';
-                
-                // Keep text color white when background is transparent
-                logo.style.color = 'white';
-                navLinks.forEach(link => {
-                    link.style.color = 'white';
-                });
-            }
-        });
-    </script>
+    <script src="/main.js"></script>
 </body>
 </html>
